@@ -1,5 +1,15 @@
-export default getOrders() { 
-const { data: tokenData } = useQuery(
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useEffect, useMemo } from "react";
+import LesTemplate from "../components/LesTemplate";
+import ChoparTemplate from "../components/ChoparTemplate";
+
+let cookedOrdersCount = 0;
+const audio = new Audio("/src/music/bells.wav");
+audio.loop = true;
+
+export default function getOrders() {
+  const { data: tokenData } = useQuery(
     ["token"],
     async () => {
       if (tokenData)
@@ -73,14 +83,14 @@ const { data: tokenData } = useQuery(
       cookedOrdersCount = cookedOrders.length;
       let today = new Date();
       let milliseconds = today.getMilliseconds();
-      const db = new Dexie("Orders");
-      db.version(1).stores({
-        orders: "++id, *orders",
-      });
-      db.open().catch((err) => {
-        console.log(err);
-      });
-      db.table("orders").put({ id: milliseconds, cookedOrders });
+      // const db = new Dexie("Orders");
+      // db.version(1).stores({
+      //   orders: "++id, *orders",
+      // });
+      // db.open().catch((err) => {
+      //   console.log(err);
+      // });
+      // db.table("orders").put({ id: milliseconds, cookedOrders });
     } else {
       if (cookedOrders) {
         cookedOrdersCount = cookedOrders.length;
@@ -92,7 +102,7 @@ const { data: tokenData } = useQuery(
   // console.log(cookingOrders);
 
   return (
-    <div className="bg-white">
+    <div className="">
       <LesTemplate cooking={cookingOrders} cooked={cookedOrders} />
       {/* <ChoparTemplate cooking={cookingOrders} cooked={cookedOrders} /> */}
     </div>
