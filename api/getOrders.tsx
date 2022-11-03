@@ -9,7 +9,7 @@ const audio = new Audio("/src/music/bells.wav");
 audio.loop = true;
 
 export default function getOrders() {
-  const { data: tokenData } = useQuery(
+  const { data: tokenData }: any = useQuery(
     ["token"],
     async () => {
       if (tokenData)
