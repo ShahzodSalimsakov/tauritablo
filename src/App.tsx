@@ -10,7 +10,9 @@ import {
   QueryClientProvider,
   QueryClient,
 } from "@tanstack/react-query";
+
 const queryClient = new QueryClient();
+
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
   const [name, setName] = useState("");
