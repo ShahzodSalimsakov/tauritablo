@@ -34,5 +34,5 @@ module.exports = {
       large: "20rem",
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };

@@ -1,0 +1,12 @@
+[package]
+name = "tauri-plugin-barcode-listen"
+version = "0.0.0"
+authors = [ "You" ]
+description = ""
+edition = "2021"
+rust-version = "1.57"
+exclude = ["/examples"]
+
+[dependencies]
+tauri = { version = "1.1.1" }
+rdev = {version = "0.5.1"}
