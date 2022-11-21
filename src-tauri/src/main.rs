@@ -6,13 +6,51 @@
 // use device_query::{DeviceQuery, DeviceState, Keycode};
 use inputbot::{KeySequence, KeybdKey::*, MouseButton::*};
 use rdev::{listen, Event, EventType, Key};
-use std::rc::Rc;
+use std::{cell::RefCell, rc::Rc, sync::Arc};
+use tauri_plugin_autostart::MacosLauncher;
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
+
+struct Barcode {
+    value: String,
+}
+
+impl Barcode {
+    pub fn new() -> Self {
+        Self {
+            value: String::new(),
+        }
+    }
+
+    pub fn set_goal(&mut self, value: String) {
+        self.value = value;
+    }
+
+    pub fn push(&mut self, value: String) {
+        self.value.push_str(value.clone().as_str());
+    }
+
+    pub fn get(&self) -> String {
+        println!("Pre Barcode: {}", self.value);
+        return self.value.clone();
+    }
+
+    pub fn is_this_the_value(&self, input: &str) -> bool {
+        self.value == input
+    }
+
+    pub fn clear(&mut self) {
+        self.value.clear();
+    }
+}
+
+static mut BARCODE: Barcode = Barcode {
+    value: String::new(),
+};
 
 fn get_char(key: EventType) -> Option<char> {
     match key {
@@ -41,16 +79,18 @@ fn main() {
     // }
     // }
 
-    let mut read_chars: String = String::new();
-
-    let mut pushCharacter = |c: char| {
-        *read_chars.push_str(c.to_string().as_str());
+    let pushCharacter = |c: char| unsafe {
+        BARCODE.push(c.to_string());
     };
 
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![greet])
         .plugin(tauri_plugin_window_state::Builder::default().build())
-        .on_page_load(|app, _ev| {
+        .plugin(tauri_plugin_autostart::init(
+            MacosLauncher::LaunchAgent,
+            Some(vec!["--flag1", "--flag2"]),
+        ))
+        .on_page_load(move |app, _ev| {
             Numrow1Key.bind(move || {
                 pushCharacter('1');
             });
@@ -81,11 +121,11 @@ fn main() {
             Numrow0Key.bind(move || {
                 pushCharacter('0');
             });
-            // EnterKey.bind(move || {
-            //     print!("Barcode read: {}", read_chars);
-            //     app.emit("read", Some(read_chars.clone())).unwrap();
-            //     read_chars.clear();
-            // });
+            EnterKey.bind(move || unsafe {
+                let barcode = BARCODE.get();
+                BARCODE.clear();
+                app.emit("barcode", barcode).unwrap();
+            });
             // Call this to start listening for bound inputs.
             inputbot::handle_input_events();
             // if let Err(error) = listen(move |event| {

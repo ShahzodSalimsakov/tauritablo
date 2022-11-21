@@ -17,7 +17,8 @@
         "createDir": true,
         "readDir": true,
         "readFile": true,
-        "writeFile": true
+        "writeFile": true,
+        "scope": ["$RESOURCE/*", "$DESKTOP/*"]
       }
     },
     "bundle": {
