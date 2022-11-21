@@ -1,14 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useEffect, useMemo } from "react";
-import LesTemplate from "../components/LesTemplate";
-import ChoparTemplate from "../components/ChoparTemplate";
+import LesTemplate from "../src/components/LesTemplate";
+import ChoparTemplate from "../src/components/ChoparTemplate";
 
 let cookedOrdersCount = 0;
 const audio = new Audio("/src/music/bells.wav");
 audio.loop = true;
 
-export default function getOrders() {
+export default function getOrders({
+  soundPathValue,
+  templateValue,
+}: {
+  soundPathValue: string;
+  templateValue: string;
+}) {
+  console.log("soundPathValue", soundPathValue);
   const { data: tokenData }: any = useQuery(
     ["token"],
     async () => {
@@ -100,10 +107,14 @@ export default function getOrders() {
 
   // console.log(cookedOrders);
   // console.log(cookingOrders);
-
+  console.log(templateValue == "les");
   return (
     <div className="">
-      <LesTemplate cooking={cookingOrders} cooked={cookedOrders} />
+      {templateValue == "les" ? (
+        <LesTemplate cookingOrders={cookingOrders} cooked={cookedOrders} />
+      ) : (
+        <ChoparTemplate cooking={cookingOrders} cooked={cookedOrders} />
+      )}
       {/* <ChoparTemplate cooking={cookingOrders} cooked={cookedOrders} /> */}
     </div>
   );

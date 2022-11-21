@@ -17,7 +17,18 @@
         "createDir": true,
         "readDir": true,
         "readFile": true,
-        "writeFile": true
+        "writeFile": true,
+        "scope": [
+          "$RESOURCE/*",
+          "$DESKTOP/*",
+          "$APPDATA/*",
+          "$HOME/*",
+          "$APPCONFIG",
+          "$APPCONFIG/*"
+        ]
+      },
+      "path": {
+        "all": true
       }
     },
     "bundle": {

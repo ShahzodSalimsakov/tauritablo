@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 export default function LesTemplate({ cooking, cooked }: any) {
+  console.log("les rendering");
   return (
     <div>
       <div className="h-full text-9xl overflow-hidden font-bold text-white uppercase">
