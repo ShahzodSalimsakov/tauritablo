@@ -4,6 +4,7 @@ import { setSetting, syncSetting } from "../helpers/settings";
 const SettingsModal = () => {
   const [soundPath, setSoundPath] = useState("");
   const [template, setTemplate] = useState("");
+  console.log("soundPath", soundPath);
 
   // onkeydown ctrl + s
   onkeydown = (event: any) => {

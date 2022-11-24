@@ -3,75 +3,50 @@ export default function LesTemplate({ cooking, cooked }: any) {
   console.log("les rendering");
   return (
     <div>
-      <div className="h-full text-9xl overflow-hidden font-bold text-white uppercase">
-        <div className="text-secondary bg-white text-center">
-          <div className="bg-secondary text-white py-16">Готовые</div>
-          <div className="text-9xl">
-            <div className="flex justify-between items-center mx-6 my-20">
-              <img
-                src="/burger.svg"
-                width={300}
-                height={300}
-                className="animate-bounce"
-              />
-              <div className="text-large">
-                {/* {cooked && cooked.length > 0 && cooked[0].Number} */}
-              </div>
-              <img
-                src="/chicken.svg"
-                width={300}
-                height={300}
-                className="animate-bounce"
-              />
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-2 py-12 mt-10 overflow-hidden h-80">
-            {/* {cooked && cooked.length > 0 ? (
-              cooked.map((order: any) => (
-                <div key={order.Id}>{order.Number}</div>
-              ))
-            ) : (
-              <div>Нет заказов</div>
-            )} */}
-          </div>
-        </div>
-        <div className="text-center text-primary">
-          <div className="bg-primary text-white py-10">Готовятся</div>
-
-          <div className="grid grid-cols-3 text-primary bg-white">
+      <div className="overflow-y-hidden font-bold uppercase grid grid-cols-2 text-center relative">
+        <img
+          src="/main_logo.svg"
+          className="absolute left-0 top-0 w-full h-full z-30 px-10 opacity-40"
+        />
+        <div className="relative"></div>
+        <div className="absolute bg-red-500  z-20 h-[100vh] top-0 left-0 w-1/2 "></div>
+        <div className="z-30  h-[100vh] top-0 left-0 w-1/2  absolute">
+          <div className="mb-8 text-[8vw] landscape:text-[6vw] ">Готовятся</div>
+          <div
+            className="text-[12vw] landscape:text-[8vw] gap-0 landscape:columns-3 columns-2"
+            // style={{
+            //   backgroundImage: `url("/main_logo.svg")`,
+            //   backgroundRepeat: "no-repeat",
+            //   backgroundPosition: "center",
+            //   backgroundSize: "contain",
+            // }}
+          >
             {/* {cooking ? (
               cooking.map((order: any) => (
-                <div key={order.Id}>{order.Number}</div>
+                <div key={order.Id} className="drop-shadow-2xl">{order.Number}</div>
               ))
             ) : (
               <div>Нет заказов</div>
             )} */}
+            <div className="drop-shadow-2xl">123</div>
+            <div className="drop-shadow-2xl">124</div>
+            <div className="drop-shadow-2xl">123</div>
+            <div className="drop-shadow-2xl">123</div>
           </div>
-          <div className="flex justify-between items-center mx-6 my-20">
-            <img
-              src="/lester.svg"
-              width={130}
-              height={130}
-              className="animate-bounce"
-            />
-            <img
-              src="/salad.svg"
-              width={130}
-              height={130}
-              className="animate-bounce"
-            />
-            <img
-              src="/soda.svg"
-              width={130}
-              height={130}
-              className="animate-bounce"
-            />
-            <img
-              src="/chips.svg"
-              width={130}
-              height={130}
-              className="animate-bounce"
-            />
+        </div>
+        <div className="absolute bg-green-500  z-20 h-[100vh] top-0 right-0 w-1/2"></div>
+        <div className="border-l-2  z-30  h-[100vh] top-0 right-0">
+          <div className="mb-8 text-[8vw] landscape:text-[6vw] ">Готовые</div>
+          <div className="text-[12vw] landscape:text-[8vw] gap-0 landscape:columns-3 columns-2">
+            {/* {cooked && cooked.length > 0 ? (
+              cooked.map((order: any) => (
+                <div key={order.Id} className="drop-shadow-2xl">{order.Number}</div>
+              ))
+            ) : (
+              <div>Нет заказов</div>
+            )} */}
+            <div className="drop-shadow-2xl">123</div>
+            <div className="drop-shadow-2xl">124</div>
           </div>
         </div>
       </div>

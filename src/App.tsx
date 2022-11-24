@@ -72,7 +72,7 @@ function App() {
   }, []);
   console.log(templateValue);
   return (
-    <div>
+    <div className=" ">
       <QueryClientProvider client={queryClient}>
         {templateValue.length > 0 && (
           <GetOrders
@@ -83,7 +83,7 @@ function App() {
         {!templateValue.length && (
           <div className="flex flex-col items-center justify-center h-screen">
             <div className="flex flex-col items-center justify-center">
-              <h1 className="text-4xl font-bold text-gray-900">
+              <h1 className="text-4xl font-bold text-black">
                 Укажите шаблон в настройках. Нажмите Ctrl + S
               </h1>
             </div>
