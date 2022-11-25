@@ -11,7 +11,7 @@ const settingsManager = new SettingsManager<Schema>({
 });
 
 export const initSetting = async () => {
-  await settingsManager.initialize();
+  return settingsManager.initialize();
 };
 
 export const getSetting = async (key: keyof Schema) => {

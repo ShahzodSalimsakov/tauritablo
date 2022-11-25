@@ -5,5 +5,5 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require("prettier-plugin-tailwindcss")],
 };

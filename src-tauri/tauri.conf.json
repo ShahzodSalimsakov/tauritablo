@@ -12,19 +12,21 @@
   },
   "tauri": {
     "allowlist": {
-      "all": true,
       "fs": {
+        "all": true,
         "createDir": true,
         "readDir": true,
         "readFile": true,
         "writeFile": true,
         "scope": [
+          "$APPDATA/*",
           "$RESOURCE/*",
           "$DESKTOP/*",
-          "$APPDATA/*",
           "$HOME/*",
           "$APPCONFIG",
-          "$APPCONFIG/*"
+          "$APPCONFIG/*",
+          "$AUDIO",
+          "$APP/databases/*"
         ]
       },
       "path": {

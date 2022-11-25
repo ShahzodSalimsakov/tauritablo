@@ -18,6 +18,7 @@ import {
   initSetting,
 } from "../src/helpers/settings";
 import SettingsModal from "./components/SettingsModal";
+import { appDataDir } from "@tauri-apps/api/path";
 // import { enable, disable, isEnabled } from "tauri-plugin-autostart-api";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ function App() {
   let [isOpen, setIsOpen] = useState(false);
 
   const listenForBarcode = async () => {
+    const appDataDirPath = await appDataDir();
     const resourceDirPath = await resourceDir();
     console.log("resourceDirPath", resourceDirPath);
     const barcode = await listen("barcode", (barcode) => {
@@ -42,8 +44,9 @@ function App() {
       if (barcode.payload) {
         let res = barcode.payload as string;
         if (res.length > 0) {
+          console.log(appDataDirPath);
           console.log("is playing");
-          let audio = new Audio(`/bells.wav`);
+          let audio = new Audio(`${appDataDirPath}bells.wav`);
           audio.play();
         }
       }
@@ -53,6 +56,7 @@ function App() {
   const getSettings = async () => {
     try {
       await initSetting();
+      console.log("davr");
       const soundPath = await getSetting("soundPath");
       const template = await getSetting("template");
       console.log("soundPath", soundPath);
@@ -81,7 +85,7 @@ function App() {
           />
         )}
         {!templateValue.length && (
-          <div className="flex flex-col items-center justify-center h-screen">
+          <div className="flex h-screen flex-col items-center justify-center">
             <div className="flex flex-col items-center justify-center">
               <h1 className="text-4xl font-bold text-black">
                 Укажите шаблон в настройках. Нажмите Ctrl + S
