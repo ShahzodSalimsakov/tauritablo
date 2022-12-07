@@ -70,7 +70,12 @@
       "csp": null
     },
     "updater": {
-      "active": false
+      "active": true,
+      "endpoints": [
+        "https://github.com/ShahzodSalimsakov/tauritablo/{{target}}/tag/{{current_version}}"
+      ],
+      "dialog": true,
+      "pubkey": "YOUR_UPDATER_SIGNATURE_PUBKEY_HERE"
     },
     "windows": [
       {
