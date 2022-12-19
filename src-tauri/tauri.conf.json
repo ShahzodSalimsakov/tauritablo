@@ -19,6 +19,7 @@
         "readFile": true,
         "writeFile": true,
         "scope": [
+          "$APP/*",
           "$APPDATA/*",
           "$RESOURCE/*",
           "$DESKTOP/*",
@@ -26,11 +27,18 @@
           "$APPCONFIG",
           "$APPCONFIG/*",
           "$AUDIO",
-          "$APP/databases/*"
+          "$APP/databases/*",
+          "$DOWNLOAD/*"
         ]
       },
       "path": {
         "all": true
+      },
+      "shell": {
+        "all": false, // enable all shell APIs
+        "execute": false, // enable process spawn APIs
+        "sidecar": true, // enable spawning sidecars
+        "open": ".*" // enable opening files/URLs using the default program
       }
     },
     "bundle": {
@@ -75,7 +83,7 @@
         "https://github.com/ShahzodSalimsakov/tauritablo/{{target}}/tag/{{current_version}}"
       ],
       "dialog": true,
-      "pubkey": "YOUR_UPDATER_SIGNATURE_PUBKEY_HERE"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEI0MjFFMkU3N0JGQTRFQwpSV1RzcEw5M0xoNUNDNU5Gb0owZE9ET09IT3JkQ0hoMzh5Z2VNMys2YXdsTlcvMEp6M0Ura0JTZgo="
     },
     "windows": [
       {
