@@ -19,23 +19,3 @@ jobs:
         with:
           node-version: 16
       - run: yarn tauri build
-
-  publish:
-    needs: build-binaries
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-      # Download the previously uploaded artifacts
-      - uses: actions/download-artifact@v3
-        id: download
-        with:
-          name: artifacts
-          path: artifacts
-      # And create a release with the artifacts attached
-      - name: "create release"
-        uses: softprops/action-gh-release@main
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-        with:
-          draft: false
-          files: ./artifacts/**/*
