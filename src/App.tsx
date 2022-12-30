@@ -20,6 +20,8 @@ import {
 import SettingsModal from "./components/SettingsModal";
 import { appDataDir } from "@tauri-apps/api/path";
 // import { enable, disable, isEnabled } from "tauri-plugin-autostart-api";
+import { checkUpdate, installUpdate } from "@tauri-apps/api/updater";
+import { relaunch } from "@tauri-apps/api/process";
 
 const queryClient = new QueryClient();
 
@@ -69,10 +71,25 @@ function App() {
     }
   };
 
+  const updateCheck = async () => {
+    try {
+      const { shouldUpdate, manifest } = await checkUpdate();
+      if (shouldUpdate) {
+        // display dialog
+        await installUpdate();
+        // install complete, restart the app
+        await relaunch();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     enableAutoStart();
     listenForBarcode();
     getSettings();
+    updateCheck();
   }, []);
   console.log(templateValue);
   return (

@@ -12,6 +12,7 @@
   },
   "tauri": {
     "allowlist": {
+      "all": false,
       "fs": {
         "all": true,
         "createDir": true,
@@ -33,12 +34,6 @@
       },
       "path": {
         "all": true
-      },
-      "shell": {
-        "all": false, // enable all shell APIs
-        "execute": false, // enable process spawn APIs
-        "sidecar": true, // enable spawning sidecars
-        "open": ".*" // enable opening files/URLs using the default program
       }
     },
     "bundle": {

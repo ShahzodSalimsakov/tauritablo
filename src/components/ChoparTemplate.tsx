@@ -10,15 +10,7 @@ export default function ChoparTemplate({ cooking, cooked }: any) {
 
         <div className="z-30 h-[100vh]">
           <div className="mb-8 text-[8vw] landscape:text-[6vw] ">Готовятся</div>
-          <div
-            className="columns-2 gap-0 text-[12vw] landscape:columns-3 landscape:text-[8vw]"
-            // style={{
-            //   backgroundImage: `url("/main_logo.svg")`,
-            //   backgroundRepeat: "no-repeat",
-            //   backgroundPosition: "center",
-            //   backgroundSize: "contain",
-            // }}
-          >
+          <div className="columns-2 gap-0 text-[12vw] landscape:columns-3 landscape:text-[8vw]">
             {/* {cooking ? (
               cooking.map((order: any) => (
                 <div key={order.Id} className="drop-shadow-2xl">{order.Number}</div>
@@ -27,14 +19,14 @@ export default function ChoparTemplate({ cooking, cooked }: any) {
               <div>Нет заказов</div>
             )} */}
             <div className="drop-shadow-2xl">123</div>
+            <div className="drop-shadow-2xl">80</div>
+            <div className="drop-shadow-2xl">123</div>
+            <div className="drop-shadow-2xl">123</div>
+            <div className="drop-shadow-2xl">70</div>
             <div className="drop-shadow-2xl">124</div>
             <div className="drop-shadow-2xl">123</div>
             <div className="drop-shadow-2xl">123</div>
-            <div className="drop-shadow-2xl">123</div>
-            <div className="drop-shadow-2xl">124</div>
-            <div className="drop-shadow-2xl">123</div>
-            <div className="drop-shadow-2xl">123</div>
-            <div className="drop-shadow-2xl">123</div>
+            <div className="drop-shadow-2xl">22</div>
             <div className="drop-shadow-2xl">124</div>
             <div className="drop-shadow-2xl">123</div>
             <div className="drop-shadow-2xl">123</div>
