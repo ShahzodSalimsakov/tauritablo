@@ -6,35 +6,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-binaries:
-    strategy:
-      fail-fast: false
-      matrix:
-        platform: [windows-latest]
-
-    runs-on: ${{ matrix.platform }}
+  build:
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
+            - name: install Rust stable
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
       - name: setup node
         uses: actions/setup-node@v3
         with:
           node-version: 16
       - run: yarn tauri build
-
-      - name: install Rust stable
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-
-      - uses: JonasKruckenberg/tauri-build@v1
-        id: tauri_build
-
-      # The `artifacts` output can now be used by a different action to upload the artifacts
-      - uses: actions/upload-artifact@v3
-        with:
-          name: artifacts
-          path: "${{ join(fromJSON(steps.tauri_build.outputs.artifacts), '\n') }}"
 
   publish:
     needs: build-binaries
