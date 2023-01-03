@@ -20,4 +20,6 @@ jobs:
           node-version: 16
       - run: yarn
       - run: cd autostart && yarn
+        env:
+          TAURI_PRIVATE_KEY: dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5WFFiT0hsQkVjaElnZkl3aC9Od3NKODRGaVhxcVU5Z05yL3ZWSzIzWHVIY0FBQkFBQUFBQUFBQUFBQUlBQUFBQXZhR0dJaDZRV2hHQU1vemZQcm53RENtZ0RsTVZPZGFwVnh5dndHaDUvemE3U3BCT2J4dTNoNXFYYkFVbHlkRmlpVjdiSlZFRkZjQXV2LzJzNEJYWWVCOU95SU5JWW1FTFJnNThQWmI5NithQjBrS2ZHNk5ITXVHcGd2aUR3MnlPeWFMWWpTTjNpdGM9Cg==
       - run: yarn tauri build
