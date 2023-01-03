@@ -19,5 +19,5 @@ jobs:
         with:
           node-version: 16
       - run: yarn
-      - run: cd tauri-plugin-autostart && yarn
+      - run: cd autostart && yarn
       - run: yarn tauri build

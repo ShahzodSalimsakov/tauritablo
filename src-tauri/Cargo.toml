@@ -21,7 +21,7 @@ tauri-plugin-window-state = {version = "0.1" }
 device_query = { version = "1.1.1"}
 rdev = {version = "0.5.2"}
 inputbot = { git = "https://github.com/obv-mikhail/InputBot", branch = "develop" }
-tauri-plugin-autostart = { path = "../tauri-plugin-autostart" }
+tauri-plugin-autostart = { path = "../autostart" }
 
 
 [features]
