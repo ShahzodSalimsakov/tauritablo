@@ -20,4 +20,6 @@ jobs:
           node-version: 16
       - run: yarn
       - run: cd autostart && yarn
+        env:
+          TAURI_PRIVATE_KEY: "${{secrets.TAURI_PRIVATE_KEY}}"
       - run: yarn tauri build
