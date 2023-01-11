@@ -9,13 +9,10 @@ const audio = new Audio("/src/music/bells.wav");
 audio.loop = true;
 
 export default function getOrders({
-  soundPathValue,
   templateValue,
 }: {
-  soundPathValue: string;
   templateValue: string;
 }) {
-  console.log("soundPathValue", soundPathValue);
   const { data: tokenData }: any = useQuery(
     ["token"],
     async () => {

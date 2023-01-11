@@ -48,7 +48,7 @@ function App() {
         if (res.length > 0) {
           console.log(appDataDirPath);
           console.log("is playing");
-          let audio = new Audio(`${appDataDirPath}bells.wav`);
+          let audio = new Audio(`src/music/bells.wav`);
           audio.play();
         }
       }
@@ -96,10 +96,7 @@ function App() {
     <div className=" ">
       <QueryClientProvider client={queryClient}>
         {templateValue.length > 0 && (
-          <GetOrders
-            soundPathValue={soundPathValue}
-            templateValue={templateValue}
-          />
+          <GetOrders templateValue={templateValue} />
         )}
         {!templateValue.length && (
           <div className="flex h-screen flex-col items-center justify-center">
